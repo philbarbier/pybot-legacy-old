@@ -1,0 +1,22 @@
+<?php
+$config = array(
+    'logfile' => '/dev/null',
+    'mongodb' => 'mongodb://localhost/pybot',
+    'irc_server' => 'localhost',
+    'irc_port' => 6667,
+    'irc_handle' => 'oldpybot',
+    'irc_channels' => array(
+        '#torontotalk',
+        '#trivia'
+    ),
+    'default_chan' => '#torontotalk',
+    'admin_chan' => '#botdev',
+    'log_stats' => false,
+    'log_history' => false,
+    'debug' => true,
+    'banned_users' => array(
+        'igor',
+        'nupogodi'
+    )
+);
+

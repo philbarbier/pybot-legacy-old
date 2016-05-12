@@ -1,0 +1,21 @@
+<?php
+$config = array(
+    'mongodb' => 'mongodb://user:thpassword@mymongodb.tld:999999/allthethings',
+    'irc_server' => 'localhost',
+    'irc_port' => 6667,
+    'irc_handle' => 'mybot',
+    'irc_channels' => array(
+        '#tmp',
+        '#linux',
+        '#chat'
+    ),
+    'default_chan' => '#tmp',
+    'admin_chan' => '#bot_ops',
+    'log_stats' => true,
+    'log_history' => true,
+    'debug' => false,
+    'banned_users' => array(
+        'igor'
+    )
+);
+
