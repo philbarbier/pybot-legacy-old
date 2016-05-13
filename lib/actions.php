@@ -203,6 +203,7 @@ class Actions {
 								840, // Oh great that guy is back or whatever
 								1068, // Why do you even bother, guy?
 								1081, // Fabulous, guy is here
+                                1289,
 							);
 			
 	        $this->abuse(array('arg1' => $data['user'], 'tpl' => $abuse_tpls[rand(0, count($abuse_tpls)-1)]));
@@ -1009,7 +1010,9 @@ class Actions {
             $output = '';
             $html = file_get_html('http://www.urbandictionary.com/define.php?term='.$q);
             $result = $html->find('div[class=definition]');
-            $def = $result[0]->nodes[0]->_;
+            if (isset($result[0]) && isset($result[0]->nodes[0]) && isset($result[0]->nodes[0]->_)) {
+                $def = $result[0]->nodes[0]->_;
+            }
             if (!empty($def)) {
                 foreach($def as $key => $val) {
                     $definition = htmlspecialchars_decode($val);
