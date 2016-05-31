@@ -731,7 +731,9 @@ class Actions {
 
     /* Tell pybot to leave a $chan */
     public function part($args) {
+        $chan = false;
         if ($args['arg1']) { $chan=$args['arg1']; }
+        if (!$chan) { $chan = $this->get_current_channel(); }
         $oldchan = $this->get_current_channel();
         $this->set_current_channel($chan);
         $this->write_channel("I'm the fuck outta here");
