@@ -153,6 +153,7 @@ class Irc {
         }x';
 
         preg_match($regex, $str, $matches);
+        // $this->write('PRIVMSG #botdev :' . $str);
         $parts = explode(' ', $str);
 
         // echo "\n" . date('Y-m-d H:i:s') . " -- RX: " . $str;
@@ -185,7 +186,7 @@ class Irc {
             $this->actions->set_message_data(trim(@$matches[5]));
         }
 
-        if (isset($parts[1]) && !empty($parts[1]) && (is_numeric($parts[1]) || $parts[1]=='JOIN' || $parts[1]=='PART')) {
+        if (isset($parts[1]) && !empty($parts[1])) { // && (is_numeric($parts[1]) || $parts[1]=='JOIN' || $parts[1]=='PART')) {
             // we should maybe parse for every code here, that way
             // we're able to tell the IRC state better
             switch (strtoupper($parts[1])) {
@@ -247,6 +248,11 @@ class Irc {
                 // someone left the channel
                 case "PART":
 
+                break;
+                case "INVITE":
+                    if (isset($parts[3])) {
+                        $this->write('JOIN ' . $parts[3]);
+                    }
                 break;
             }
             if (!$this->in_whois) {
